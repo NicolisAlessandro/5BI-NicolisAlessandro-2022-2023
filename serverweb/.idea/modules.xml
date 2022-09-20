@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/esercizi/CSV/CSV.iml" filepath="$PROJECT_DIR$/esercizi/CSV/CSV.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Soffiati_lorenzo_serverWeb/Soffiati_lorenzo_serverWeb.iml" filepath="$PROJECT_DIR$/Soffiati_lorenzo_serverWeb/Soffiati_lorenzo_serverWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/serverweb.iml" filepath="$PROJECT_DIR$/.idea/serverweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/esercizi/soffiati_Lorenzo_jdbc_2.1/soffiati_Lorenzo_jdbc_2.1.iml" filepath="$PROJECT_DIR$/esercizi/soffiati_Lorenzo_jdbc_2.1/soffiati_Lorenzo_jdbc_2.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/esercizi/soffiati_lorenzo_jdbc_01/soffiati_lorenzo_jdbc_01.iml" filepath="$PROJECT_DIR$/esercizi/soffiati_lorenzo_jdbc_01/soffiati_lorenzo_jdbc_01.iml" />
+    </modules>
+  </component>
+</project>
