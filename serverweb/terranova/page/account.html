@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<title>Account</title>
+		<link rel="icon" type="image/x-icon" href="../img/logo.png">
+		<meta charset="utf-8"/>
+		<meta content="width=device-width, initial-scale=1" name="viewport"/>
+		<link href="../css/generale.css" rel="stylesheet" type="text/css"/>
+		<link href="../css/sezioni.css" rel="stylesheet" type="text/css"/>
+		<script type="text/javascript" src="../script/accesso.js"></script>
+		
+		
+		<script>
+			if(controlloValidità()==false) window.location.href = "login.html";
+		</script>
+	</head>
+	
+	<body>
+	
+		<!-- navbar con tasti e logo -->
+		<div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navigation-bar w-nav">
+			<div class="w-container">
+				
+				<!-- logo -->
+				<a href="../index.html" aria-current="page" class="brand-link w-nav-brand w--current">
+					<h1 class="brand-text">ARDOS</h1>
+				</a>
+				
+				<!-- tasti -->
+				<nav role="navigation" class="navigation-menu w-nav-menu">
+					<a href="../index.html" aria-current="page" class="navigation-link w-nav-link">Home</a>
+					<a href="payments.html" class="navigation-link w-nav-link">Pagamenti</a>
+					<a href="graphs.html" class="navigation-link w-nav-link">Grafici</a>
+					<a href="cronologia.html" class="navigation-link w-nav-link">Cronologia</a>
+					<a href="#" class="navigation-link w-nav-link w--current">Account</a>
+					<a onclick="logout()" class="navigation-link w-nav-link">logout</a>
+				</nav>
+				
+				<!-- per telefono -->
+				<input type="checkbox" id="hamburger-input" />
+				<label id="hamburger-menu" for="hamburger-input">
+				  <nav id="sidebar-menu">
+					<ul>
+					  <li><a href="../index.html" >Home</a></li>
+					  <li><a href="payments.html">Pagamenti</a></li>
+					  <li><a href="graphs.html">Grafici</a></li>
+					  <li><a href="cronologia.html">Cronologia</a></li>
+					  <li><a href="#" class="posizione" >Acount</a></li>
+					  <li><a onclick="logout()">Log-out</a></li>
+					</ul>
+				  </nav>
+				</label>
+			</div>
+		</div>
+		
+		<!-- Dati Dell'utente -->
+		<div class="section">
+		
+			<script>
+				let token = sessionStorage.getItem("token");
+				
+				
+				function getUts(token){
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.onreadystatechange = function() { 
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+						var r=JSON.parse(xmlHttp.responseText)[0];
+						var temp;
+						
+						// Nome
+						if(r.nome == null){
+							temp = "inserire nome";
+							document.getElementById("nome").placeholder  = temp;
+						} else document.getElementById("nome").value = r.nome;
+						// Cognome 
+						if(r.cognome == null){
+							temp = "inserire cognome";
+							document.getElementById("cognome").placeholder  = temp;
+						}else document.getElementById("cognome").value = r.cognome;
+						// Ragione sociale 
+						if(r.ragione_sociale == null){
+							temp = "inserire nome azienda";
+							document.getElementById("ragione_sociale").placeholder  = temp;
+						} else document.getElementById("ragione_sociale").value = r.ragione_sociale;
+						// Email
+						document.getElementById("email").value = r.email;
+						// Numero telefono
+						if(r.numero_telefono == null){
+							temp = "inserire numero telefono";
+							document.getElementById("nTelefono").placeholder  = temp;
+						} else document.getElementById("nTelefono").value = r.numero_telefono;
+						
+						
+						
+					}
+					if(xmlHttp.readyState == 4 && xmlHttp.status == 500){
+						console.log(xmlHttp.responseText);
+						alert("qualcosa è andato storto");
+					}
+				}
+				xmlHttp.open("GET", "https://local.marconivr.it/ardos/API/clienti?jwt="+token, true); 
+				xmlHttp.setRequestHeader("Content-Type", "application/json");
+				xmlHttp.send(null);
+			}
+			getUts(token);
+			</script>
+		
+			<!-- Utente -->
+			<h1>Utente</h1>
+			<form id="user" name="user-form" class="form user_box">
+				<div class="w-row">
+					<input type="text" class="user_info form-field w-input w-col w-col-6" maxlength="40" name="nome" data-name="nome"  id="nome"/>
+					<input type="text" class="form-field w-input user_info w-col w-col-6" style="margin-left: 15%" maxlength="40" name="cognome" data-name="cognome"  id="cognome"/>
+				</div>
+				<input type="text" class="form-field w-input user_info" maxlength="256" name="ragione_sociale" data-name="ragione_sociale" id="ragione_sociale"/>
+				<input type="email" class="form-field w-input user_info" maxlength="256" name="email" data-name="email" id="email" required=""/>	
+				<input type="text" class="form-field w-input user_info" maxlength="256" name="nTelefono" data-name="nTelefono" id="nTelefono"/>	
+			
+				<br>
+				<h3 style="text-align: left; margin-left: 10%"> Cambia password <h3> 
+				<input type="password" class="form-field w-input user_info" maxlength="256" id="nPassword" placeholder="nuova password ..."/>	
+				<input type="password" class="form-field w-input user_info" maxlength="256" id="nPassword1" placeholder="conferma nuova password"/>				
+			</form>
+			
+			<script>
+			
+				function salvaApi(dati){
+					var xmlHttp = new XMLHttpRequest();
+					xmlHttp.onreadystatechange = function() { 
+						if (xmlHttp.readyState == 4 && xmlHttp.status == 204){
+							alert("informazioni salvate con successo");
+						}
+						if (xmlHttp.readyState == 4 && xmlHttp.status == 404 && xmlHttp.responseText != null){
+							alert("Errore nel salvataggio");
+							console.log(JSON.parse(xmlHttp.responseText));
+						}
+					}
+					xmlHttp.open("POST", "https://local.marconivr.it/ardos/API/modifica?jwt=" + token , true); // true for asynchronous
+					var data = JSON.stringify(dati);
+					xmlHttp.setRequestHeader("Content-Type", "application/json");
+					xmlHttp.send(data);
+				}
+				
+				function salvaDati(){
+					var dati ={};
+					
+					// Nome
+					var nome = document.getElementById("nome").value;
+					if (nome != "") dati = {...dati, nome};
+					
+					// Cognome
+					var cognome = document.getElementById("cognome").value;
+					if (cognome != "") dati = {...dati, cognome};
+					
+					// Ragione sociale
+					var ragione_sociale = document.getElementById("ragione_sociale").value;
+					if (ragione_sociale != "") dati = {...dati, ragione_sociale};
+					
+					// Email
+					var email = document.getElementById("email").value;
+					if (email) dati = {...dati, email};
+					
+					// Numero telefono
+					var numero_telefono = document.getElementById("nTelefono").value;
+					if (numero_telefono != ""){
+						if(!isNaN(parseInt(numero_telefono))) dati = {...dati, numero_telefono};
+						else alert("inserire un numero di telefono valido");
+					}
+					// Controllo Password
+					var password = document.getElementById("nPassword").value;
+					var password1 = document.getElementById("nPassword1").value;
+					if(password != "" && password1 != "" && password == password1) dati ={...dati, password};
+
+					salvaApi(dati);
+				}
+				
+			</script>
+			
+			
+			<a class="button-65" style ="margin-left: -11%" onclick="salvaDati()">salva</a>
+			
+			<br>
+			<br>
+			<hr>
+			<br>
+
+			
+			<!-- Sedi -->
+			<h1>Sedi</h1>
+			
+			<center>
+			
+			<!-- <div><input class="search" type="text" placeholder="Search..."></div> -->
+			
+			<br>
+			<div class="loader" id="myDIV"></div>
+			<div class="boxi" id="boxi"></div>
+			</center>
+		</div>
+		
+		<script>
+			let testo = "";
+			
+			function crea(item, index){
+				testo += '<a class="sedi" href="sedi.html?id=';
+				testo += item.SID;
+				testo += '"> <p class ="indirizzo">';
+				testo += item.indirizzo;
+				testo += '</p> <p class="citta">';
+				testo += item.citta;
+				testo += '</p>  <p class="cap">';
+				testo += item.cap;
+				testo += '</p></a>'
+			}
+				
+			function getSedi(token){
+				// Indirizzo sede
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.onreadystatechange = function(){
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+						r = JSON.parse(xmlHttp.responseText);
+						r.forEach(crea);
+						
+						var element = document.getElementById("myDIV");
+						element.classList.remove("loader");
+						
+						document.getElementById("boxi").innerHTML = testo;
+						
+					}
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 404){
+						sede = JSON.parse(xmlHttp.responseText)[0].indirizzo;
+						console.log(sede);
+					}
+				}
+				xmlHttp.open("GET", "https://local.marconivr.it/ardos/API/sedi?jwt=" + token, false);
+				xmlHttp.setRequestHeader("Content-Type", "application/json");
+				xmlHttp.send(null);
+			}
+			
+			getSedi(token);
+			
+		</script>
+		
+		<!-- footer con link -->
+		<div class="footer">
+			<div class="w-container">
+				<div class="w-row">
+					<div class="spc w-col w-col-4">
+						<h5>In riguardo ad Ardos</h5>
+						<p>Nato come progetto scolastico con la collaborazione di Terranova.<br>
+						membri del gruppo: Soffiati Lorenzo, Ferrari Francesco, Barascu Umberto, Aldrighetti Maximo, Ilievski andrej</p>
+					</div>
+					<div class="spc w-col w-col-4">
+						<h5>Link utili</h5>
+						<a href="contact.html" class="footer-link">Contattaci</a>
+						<a href="login.html" class="footer-link">Login</a>
+
+					</div>
+					<div class="w-col w-col-4">
+						<h5>Social</h5>
+						<div class="footer-link-wrapper w-clearfix">
+							<img src="https://assets.website-files.com/5e4b18feebfd1a721bb930e6/5e4b18feebfd1a3b71b93135_social-18.svg" width="20" alt="" class="info-icon"/>
+							<a href="#" class="footer-link with-icon">Twitter</a>
+						</div>
+						<div class="footer-link-wrapper w-clearfix">
+							<img src="https://assets.website-files.com/5e4b18feebfd1a721bb930e6/5e4b18feebfd1a0b47b9311e_social-03.svg" width="20" alt="" class="info-icon"/>
+							<a href="#" class="footer-link with-icon">Facebook</a>
+						</div>				
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,188 @@
+.boxi{
+	height: 400px !important; 
+	width: 60% !important;
+	overflow: auto !important;
+}
+
+.boxi2{
+	max-height: 500px !important; 
+	width: 70% !important;
+	overflow: auto !important;
+}
+
+.sedi{
+	border: 1px solid #DCEBF7 !important;
+	border-radius: 2px !important;
+	background-color: white !important;
+	width: 100% !important;
+	padding: 0% 2% !important;
+	cursor: pointer !important;
+	border-style: outset !important;
+	color: black !important;
+	flex-flow: row nowrap !important;
+	justify-content: center !important;
+	align-content: center !important;
+	align-items:center !important;
+	display: flex !important;
+	text-decoration: none !important;
+	
+}
+
+.indirizzo{
+	text-align: left !important;
+	flex: 1 1 auto !important;
+	font-size: 20px !important;
+	font-family: 'Open Sans', sans-serif;
+}
+.citta{
+	text-align: center !important;
+	flex: 1 1 auto !important;
+	font-size: 20px !important;
+	font-family: 'Open Sans', sans-serif;
+}
+.cap{
+	text-align: right !important;
+	flex: 1 1 auto !important;
+	font-size: 20px !important;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+	width: 40%;
+	padding: 12px 24px;
+
+	background-color: transparent;
+	transition: transform 250ms ease-in-out;
+	font-size: 15px;
+	line-height: 18px;
+	
+	color: #69b9ff;
+	background-color: transparent;
+
+	background-image: url('../img/icone/lens.png');
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 95% center;
+	border-radius: 50px;
+	
+	border: 1px solid #cccccc;
+	transition: all 250ms ease-in-out;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+}
+
+.search:focus{
+	outline: none;
+}
+
+.button-65 {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #69b9ff;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  height: 50px;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 14px 30px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-65:hover {
+  background-color: #1366d6;
+  box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.button-65:hover:after {
+  opacity: .5;
+}
+
+.button-65:active {
+  box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+.button-65:active:after {
+  opacity: 1;
+}
+
+
+
+/* From uiverse.io by @satyamchaudharydev */
+.loader {
+ --clr: #3498db;
+ /* color of spining  */
+ width: 50px;
+ height: 50px;
+ position: relative;
+}
+
+.loader:before, .loader:after {
+ content: "";
+ position: absolute;
+ top: -10px;
+ left: -10px;
+ width: 100%;
+ height: 100%;
+ border-radius: 100%;
+ border: 10px solid transparent;
+ border-top-color: var(--clr);
+}
+
+.loader:before {
+ z-index: 100;
+ animation: spin 1s infinite;
+}
+
+.loader:after {
+ border: 10px solid #ccc;
+}
+
+@keyframes spin {
+ 0% {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+ }
+
+ 100% {
+  -webkit-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+ }
+}
+
+
+@media (min-width: 768px) {
+  .button-65 {
+    padding: 14px 22px;
+    width: 176px;
+  }
+}
+
+/

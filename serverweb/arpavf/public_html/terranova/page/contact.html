@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<title>Contact</title>
+		<link rel="icon" type="image/x-icon" href="../img/logo.png">
+		<meta charset="utf-8"/>
+		<meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+		<link href="../css/generale.css" rel="stylesheet" type="text/css"/>
+		
+	</head>
+	
+	<body>
+	
+	
+		<!-- navbar con tansti e logo -->
+		<div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navigation-bar w-nav">
+			<div class="w-container">
+				
+				<!-- logo -->
+				<a href="../index.html" aria-current="page" class="brand-link w-nav-brand w--current">
+					<h1 class="brand-text">ARDOS</h1>
+				</a>
+				
+				<!-- tassti -->
+				<nav role="navigation" class="navigation-menu w-nav-menu">
+					<a href="../index.html" aria-current="page" class="navigation-link w-nav-link">Home</a>
+					<a href="contact.html" class="navigation-link w-nav-link w--current">Contatti</a>
+					<a href="login.html" class="navigation-link w-nav-link">Accedi</a>
+				</nav>
+				
+				<!-- per telefono -->
+				<input type="checkbox" id="hamburger-input" />
+				<label id="hamburger-menu" for="hamburger-input">
+				  <nav id="sidebar-menu">
+					<ul>
+					  <li><a href="../index.html" >Home</a></li>
+					  <li><a href="#" class="posizione" >Contact</a></li>
+					  <li><a href="login.html" >Login</a></li>
+					</ul>
+				  </nav>
+				</label>
+			</div>
+		</div>
+		
+		
+		<!-- google map -->
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.0660314620645!2d10.96961251473876!3d45.42817024386933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f5f61f8852227%3A0xfab7331910c8e071!2sITIS%20Guglielmo%20Marconi!5e0!3m2!1sit!2sit!4v1647252218772!5m2!1sit!2sit" width="600" height="450" class="w-widget w-widget-map";" allowfullscreen="" loading="lazy"></iframe>
+		
+		
+		<div class="section">
+			<div class="w-container">
+				<div class="section-title-group">
+					<h2 class="section-heading centered">Contattaci adesso</h2>
+					<div class="section-subheading center">risponderemo a tutte le vostre domande.</div>
+				</div>
+				<p>Qualunque domanda o curiosità te abbia puoi scrivercela attraverso questo form. <br/>
+					<br/>Appena uno dei nostri dipendenti avrà visionato la tua domanda ti risponderà sulla email che avrai indicato.<br/>Potrebbero essere necessari diversi giorni affinchè la vostra domanda venga visionata.</p>
+				<div class="form-wrapper w-form">
+					<form id="email-form" name="email-form" data-name="Email Form" class="form">
+						<input type="text" class="form-field w-input" maxlength="256" name="Name" data-name="Name" placeholder="Inserisci il tuo nome" id="name" required=""/>
+						<input type="email" class="form-field w-input" maxlength="256" name="Email" data-name="Email" placeholder="Inserisci la tua email" id="email" required=""/>
+						<textarea id="testo" name="field-2" placeholder="Message" maxlength="5000" data-name="Field 2" class="form-field text-area w-input"> </textarea>
+					</form>
+					<input type="submit" value="invia" data-wait="Please wait..." class="button full-width w-button" onclick="richiestaAPI()"/>
+					
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			function richiestaAPI(){
+			
+				email = document.getElementById("email").value;
+				nome = document.getElementById("name").value;
+				testo = document.getElementById("testo").value;
+				
+				
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.onreadystatechange = function() { 
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 201){
+						alert("richiesta inviata");
+					}
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 404 && xmlHttp.responseText != null){
+						alert("si è verificato un errore! riprovare più tardi");
+						console.log(JSON.parse(xmlHttp.responseText));
+					}
+				}
+				
+				xmlHttp.open("POST", "https://local.marconivr.it/ardos/API/addRichiesta", true); // true for asynchronous
+				var data = JSON.stringify({"nome":nome,
+										   "email":email,
+										   "messaggio": testo});
+				xmlHttp.setRequestHeader("Content-Type", "application/json");
+				xmlHttp.send(data);
+			}
+		</script>
+		
+		
+		<!-- footer con link -->
+		<div class="footer">
+			<div class="w-container">
+				<div class="w-row">
+					<div class="spc w-col w-col-4">
+						<h5>In riguardo ad Ardos</h5>
+						<p>Nato come progetto scolastico con la collaborazione di Terranova.<br>
+						membri del gruppo: Soffiati Lorenzo, Ferrari Francesco, Barascu Umberto, Aldrighetti Maximo, Ilievski andrej</p>
+					</div>
+					<div class="spc w-col w-col-4">
+						<h5>Link utili</h5>
+						<a href="contact.html" class="footer-link">Contattaci</a>
+						<a href="login.html" class="footer-link">Login</a>
+
+					</div>
+					<div class="w-col w-col-4">
+						<h5>Social</h5>
+						<div class="footer-link-wrapper w-clearfix">
+							<img src="https://assets.website-files.com/5e4b18feebfd1a721bb930e6/5e4b18feebfd1a3b71b93135_social-18.svg" width="20" alt="" class="info-icon"/>
+							<a href="#" class="footer-link with-icon">Twitter</a>
+						</div>
+						<div class="footer-link-wrapper w-clearfix">
+							<img src="https://assets.website-files.com/5e4b18feebfd1a721bb930e6/5e4b18feebfd1a0b47b9311e_social-03.svg" width="20" alt="" class="info-icon"/>
+							<a href="#" class="footer-link with-icon">Facebook</a>
+						</div>				
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

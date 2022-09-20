@@ -1,0 +1,68 @@
+/*html per il loader
+<div class="loader--container">
+	<div class="loader--small">
+		<div class="loader--small__circle"></div>
+		<div class="loader--small__circle"></div>
+		<div class="loader--small__circle"></div>
+	</div>
+</div>
+*/
+.loader--container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.loader--small {
+  display: flex;
+  margin: 1em;
+}
+
+.loader--small__circle {
+  font-size: .75em;
+  width: 1em;
+  height: 1em;
+  
+  background-color: #b9a2e8;
+  border-radius: 50%;
+  
+  -webkit-animation: .5s infinite linear small-loader-circle-spin;
+  
+          animation: .5s infinite linear small-loader-circle-spin;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  will-change: transform;
+}
+
+.loader--small__circle:nth-child(2) {
+    margin: 0 0.25em;
+  }
+
+.loader--small__circle:nth-child(2) {
+      -webkit-animation-delay: calc(.5s * ((2 - 1) / 3));
+              animation-delay: calc(.5s * ((2 - 1) / 3));
+    }
+
+.loader--small__circle:nth-child(3) {
+      -webkit-animation-delay: calc(.5s * ((3 - 1) / 3));
+              animation-delay: calc(.5s * ((3 - 1) / 3));
+    }
+
+@-webkit-keyframes small-loader-circle-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes small-loader-circle-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
