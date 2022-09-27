@@ -11,7 +11,7 @@ class UDP_03 {
         DatagramSocket sck = null;
 
         sck = new DatagramSocket(2000);
-        ip = InetAddress.getByName("172.16.1.99");
+        ip = InetAddress.getByName("172.16.20.14");
         System.out.println("sck = " + sck.getInetAddress());
         DatagramPacket p_rece, p_send;
 
@@ -25,7 +25,7 @@ class UDP_03 {
             System.out.println(1);
             sck.receive(p_rece);
             System.out.println(2);
-            System.out.println("p_rece = " + p_rece);
+            System.out.println("p_rece = " + new String(p_rece.getData(), p_rece.getData().length));
             p_send = new DatagramPacket(
                     p_rece.getData(),
                     p_rece.getLength(),

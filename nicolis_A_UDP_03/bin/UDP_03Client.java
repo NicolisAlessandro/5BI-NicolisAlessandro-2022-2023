@@ -13,7 +13,7 @@ public class UDP_03Client {
         DatagramPacket p_send, p_rece;
         String mex;
         boolean fine = true;
-        InetAddress ip = InetAddress.getByName("172.16.1.99");
+        InetAddress ip = InetAddress.getByName("172.16.20.14");
         DatagramSocket socket = new DatagramSocket();
         System.out.println("socket = " + socket.getInetAddress());
         System.out.println(1);
