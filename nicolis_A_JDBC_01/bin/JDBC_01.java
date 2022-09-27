@@ -1,6 +1,10 @@
 package nicolis_A_JDBC_01.bin;
 
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
+
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -70,12 +74,16 @@ public class JDBC_01{
                 return statement.executeUpdate();
         }
 
-        public static int modifyTable(Connection connection, int id, String classe, String surname) throws SQLException {
+        public static int modifyTable(Connection connection, int id, String classe, String materie, String aula, int giorno, int ora) throws SQLException {
                 String updateSQL = "update amici set nome=?,cognome=? where id=?";
                 PreparedStatement statement = connection.prepareStatement(updateSQL);
                 statement.setString(1, classe);
-                statement.setString(2, surname);
+                statement.setString(2, materie);
+                statement.setString(3, aula);
                 statement.setInt(0, id);
+                statement.setInt(4, giorno);
+                statement.setInt(5, ora);
+
 
                 return statement.executeUpdate();
         }
@@ -87,6 +95,14 @@ public class JDBC_01{
                 return strings;
         }
 
+        public static ArrayList<String[]> csvInserisci(){
+                try (CSVReader reader = new CSVReader(new FileReader("file.csv"))) {
+                        ArrayList<String[]> r = reader.readAll();
+                        r.forEach(x -> System.out.println(Arrays.toString(x)));
+                }
+                return r;
+        }
+
         public static void main(String[] arg) {
                 Scanner scanner = new Scanner(System.in);
                 Connection connection;
@@ -96,37 +112,47 @@ public class JDBC_01{
 
                         boolean cont = true;
                         while (cont) {
-                                if (existTable(connection, "amici")) {
+                                if (existTable(connection, "docenti-Nicolis")) {
                                         System.out.println("Tabella esistente");
                                 } else {
                                         System.out.println("Tabella inesistente");
                                 }
 
-                                System.out.print("0 Uscita\n1 Crea Tabella\n2 visualizza\n3 Aggiungi\n4 Mod Tabella\n");
+                                System.out.print("0 Uscita\n1 Crea Tabella\n2 visualizza\n3 Aggiungi\n4 Mod Tabella\n5 Csv");
                                 String line = scanner.nextLine();
 
-                                int result, code;
-                                String name, surname;
+                                int result, id, giorno, ora;
+                                String classe, materia, aula;
+                                ArrayList<String[]> list;
 
                                 switch (line.charAt(0)) {
                                         case '0' -> cont = false;
                                         case '2' -> viewTable(connection);
+                                        case '5' -> list = csvInserisci();
+                                        String[] s = new String[list.size()];
+
                                         case '3' -> {
                                                 System.out.print("Nome -->");
-                                                name = scanner.nextLine();
+                                                classe = scanner.nextLine();
                                                 System.out.print("Cognome -->");
-                                                surname = scanner.nextLine();
-                                                result = insertIntoTable(connection, name, surname);
+                                                materia = scanner.nextLine();
+                                                result = insertIntoTable(connection, classe, materia);
                                                 System.out.println("risultato " + result);
                                         }
                                         case '4' -> {
-                                                System.out.print("Codice -->");
-                                                code = Integer.parseInt(scanner.nextLine());
-                                                System.out.print("Nome -->");
-                                                name = scanner.nextLine();
-                                                System.out.print("Cognome -->");
-                                                surname = scanner.nextLine();
-                                                result = modifyTable(connection, code, name, surname);
+                                                System.out.print("Id -->");
+                                                id = Integer.parseInt(scanner.nextLine());
+                                                System.out.print("Classe -->");
+                                                classe = scanner.nextLine();
+                                                System.out.print("Materia -->");
+                                                materia = scanner.nextLine();
+                                                System.out.print("l'aula -->");
+                                                aula = scanner.nextLine();
+                                                System.out.print("il giorno -->");
+                                                giorno = Integer.parseInt(scanner.nextLine());
+                                                System.out.print("l'ora -->");
+                                                ora = Integer.parseInt(scanner.nextLine());
+                                                result = modifyTable(connection, id, classe, materia, aula, giorno, ora );
                                                 System.out.println("risultato " + result);
                                         }
                                         case '1' -> createTable(connection);
