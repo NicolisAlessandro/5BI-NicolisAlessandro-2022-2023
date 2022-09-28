@@ -1,4 +1,0 @@
-function onload(){
-    grafico();
-    //initMap();
-}

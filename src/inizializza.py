@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__autor__ = "Francesco"
+__author__ = "deMartini Francesco"
 __version__ = "0101 2020/10/12"
 
 # TODO modificare scrittura README encoding sbagliata

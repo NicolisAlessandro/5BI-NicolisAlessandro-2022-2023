@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__autor__ = "Francesco"
+__author__ = "deMartini Francesco"
 __version__ = "0101 2021/11/30"
 
 import os
