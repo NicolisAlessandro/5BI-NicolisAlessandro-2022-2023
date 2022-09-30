@@ -1,0 +1,614 @@
+openapi: 3.0.1
+info:
+  title: 'Ardos '
+  description: 'documentazione API per local.marconivr.it/ardos'
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://local.marconivr.it/ardos/API
+tags:
+- name: Clienti
+  description: tutto le informazioni necesarie sugli utenti
+- name: Accesso
+- name: User
+  description: modifica dei dati dell'utente
+- name: Altro
+paths:
+  /clienti/{clienteID}:
+    get:
+      tags:
+      - Clienti
+      summary: visualizza le informazioni degli utenti
+      description: visualizza le informazioni dell'utente, necessario come query il
+        token
+      operationId: getClient
+      parameters:
+      - name: clienteID
+        in: path
+        description: ID dell'utente
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cliente'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: unauthenticated
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - api_key: []
+  /fatture/{fatturaID}:
+    get:
+      tags:
+      - Clienti
+      summary: visualizza le informazioni delle fatture
+      description: visualizza le informazioni delle fatture, necessario come query
+        il token
+      operationId: getfatture
+      parameters:
+      - name: fatturaID
+        in: path
+        description: ID della fattura
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Fattura'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: unauthenticated
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - api_key: []
+  /sedi/{sediID}:
+    get:
+      tags:
+      - Clienti
+      summary: visualizza le informazioni delle sedi
+      description: visualizza le informazioni delle sedi, necessario come query il
+        token
+      operationId: getSedi
+      parameters:
+      - name: sediID
+        in: path
+        description: ID delle sedi
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sedi'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: unauthenticated
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - api_key: []
+  /contratti/{contrattiID}:
+    get:
+      tags:
+      - Clienti
+      summary: 'visualizza le informazioni dei contratti '
+      description: visualizza le informazioni dei contratti, necessario come query
+        il token
+      operationId: getContratti
+      parameters:
+      - name: contrattiID
+        in: path
+        description: ID del contratto
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contratti'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: unauthenticated
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - api_key: []
+  /consumi/{ClienteID}/{anno}/{mese}:
+    get:
+      tags:
+      - Clienti
+      summary: 'visualizza sui consumi '
+      description: visualizza le informazioni sui consumi in base al periodo, necessario
+        come query il token
+      operationId: getConsumi
+      parameters:
+      - name: ClienteID
+        in: path
+        description: ID del cliente
+        required: true
+        schema:
+          type: integer
+      - name: anno
+        in: path
+        description: anno del cunsuomo che si vuole visualizzare
+        required: true
+        schema:
+          type: integer
+      - name: mese
+        in: path
+        description: mese del cunsuomo che si vuole visualizzare
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Consumi'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: unauthenticated
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - api_key: []
+  /login:
+    post:
+      tags:
+      - Accesso
+      summary: login
+      description: login
+      operationId: login
+      requestBody:
+        description: credenziali dell'utente inviate com post
+        content:
+          application/json:
+            schema:
+              required:
+              - email
+              - password
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+        required: false
+      responses:
+        201:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Login'
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      x-codegen-request-body-name: user
+  /singup:
+    post:
+      tags:
+      - Accesso
+      summary: singup
+      description: singup
+      operationId: singup
+      requestBody:
+        description: credenziali dell'utente inviate com post
+        content:
+          application/json:
+            schema:
+              required:
+              - email
+              - password
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+        required: false
+      responses:
+        201:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Singup'
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      x-codegen-request-body-name: user
+  /prodotti/{prodottiID}:
+    get:
+      tags:
+      - Altro
+      summary: visualizza i prodotti
+      description: visualizza dei prodotti venduti
+      operationId: postLogin
+      parameters:
+      - name: prodottiID
+        in: path
+        description: ID delle sedi
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Prodotti'
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+  /addRichiesta:
+    post:
+      tags:
+      - Altro
+      summary: help
+      description: creazione di una richiesta di aiuto
+      operationId: addRichiesta
+      requestBody:
+        description: credenziali dell'utente inviate com post
+        content:
+          application/json:
+            schema:
+              required:
+              - email
+              type: object
+              properties:
+                nome:
+                  type: string
+                email:
+                  type: string
+                messaggio:
+                  type: string
+        required: false
+      responses:
+        201:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Singup'
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      x-codegen-request-body-name: user
+  /pagato/{fatturaID}:
+    post:
+      tags:
+      - User
+      summary: paga
+      description: segna quando una fattura è stata pagata, necessario token
+      operationId: paga
+      parameters:
+      - name: fatturaID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: No Content
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: unauthenticated
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - api_key: []
+  /modifica/{clienteID}:
+    post:
+      tags:
+      - User
+      summary: modifica dell'utente
+      description: modifica dei valori dell'utente
+      operationId: putUtente
+      parameters:
+      - name: clienteID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: credenziali dell'utente inviate com post
+        content:
+          application/json:
+            schema:
+              required:
+              - email
+              type: object
+              properties:
+                nome:
+                  type: string
+                cognome:
+                  type: string
+                ragione_sociale:
+                  type: string
+                email:
+                  type: string
+                numero_telefono:
+                  type: string
+                password:
+                  type: string
+        required: false
+      responses:
+        204:
+          description: No Content
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: unauthenticated
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - api_key: []
+      x-codegen-request-body-name: user
+components:
+  schemas:
+    Fattura:
+      type: object
+      properties:
+        FID:
+          type: string
+          format: integer
+          example: "1"
+        descrizione:
+          type: string
+          format: string
+        data_inizio:
+          type: string
+          format: date
+        data_scadenza:
+          type: string
+          format: date
+        data_pagamento:
+          type: string
+          format: date
+        consumo:
+          type: string
+          format: integer
+          example: "365"
+        saldo:
+          type: string
+          format: integer
+          example: "0.00"
+        SID:
+          type: string
+          format: inetger
+          example: "1"
+        CID:
+          type: string
+          format: integer
+          example: "1"
+    Cliente:
+      required:
+      - CLID
+      type: object
+      properties:
+        CLID:
+          type: string
+          format: integer
+          example: "1"
+        nome:
+          type: string
+          format: string
+        cognome:
+          type: string
+          format: string
+        ragione_sociale:
+          type: string
+          format: string
+        email:
+          type: string
+          format: string
+        numero_telefono:
+          type: string
+          format: string
+    Sedi:
+      required:
+      - CLID
+      type: object
+      properties:
+        SID:
+          type: string
+          format: integer
+          example: "1"
+        descrizione:
+          type: string
+          format: string
+        indirizzo:
+          type: string
+          format: string
+        citta:
+          type: string
+          format: string
+        cap:
+          type: string
+          format: string
+        CLID:
+          type: string
+          format: string
+          example: "1"
+    Contratti:
+      type: object
+      properties:
+        CID:
+          type: string
+          format: integer
+          example: "1"
+        data_inizio:
+          type: string
+          format: date
+        data_fine:
+          type: string
+          format: date
+        SID:
+          type: string
+          format: string
+          example: "1"
+        PID:
+          type: string
+          format: string
+          example: "1"
+    Consumi:
+      type: object
+      properties:
+        consumo:
+          type: string
+          format: string
+        data_inizio:
+          type: string
+          format: date
+        type:
+          type: string
+          format: string
+    Login:
+      type: object
+      properties:
+        code:
+          type: string
+          format: integer
+          example: "201"
+        jwt:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Successful_login.
+            jwt:
+              type: string
+            expireAt:
+              type: integer
+              example: 1650374523
+    Singup:
+      type: object
+      properties:
+        location:
+          type: string
+          format: url
+    Prodotti:
+      type: object
+      properties:
+        PID:
+          type: string
+          format: integer
+          example: "1"
+        type:
+          type: string
+          format: string
+        descrizione:
+          type: string
+          format: date
+        prezzo:
+          type: string
+          format: float
+          example: "0.50"
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: jwt
+      in: query

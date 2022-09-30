@@ -1,0 +1,95 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Air pollution</title>
+        <link rel="stylesheet" href="css/table.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/collapsable.css">
+        <link rel="stylesheet" href="css/loader.css">
+		<link rel="stylesheet" href="css/freccia.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="script/grafico.js"></script>
+		<script src="script/api.js"></script>
+		
+
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        
+        <center><h1 class="titolo">Air Pollution</h1></center>
+		<center><h2 class="titolo" id="Anno"></h1></center>
+		<script>var anno = 2020;</script>
+		
+		<center>
+		<div>
+		<div class="sarrow" style="float:left; margin-top:10%; margin-left: 20%" name="frecciaMeno">
+		  <div class="arrow-stop"></div>
+		  <div class="arrow-sbottom"></div>
+		</div>
+		
+		<div id="contenitoreGrafico" class="grafico" style="float:center"><canvas id="mixed-chart" width="50%" height="25%"></canvas></div>
+		
+		<div class="loader--container" id="loader"></div>
+		
+		<div class="arrow" style="float:right; margin-top: -15%; margin-right: 18%" name="frecciaPiu">
+		  <div class="arrow-top"></div>
+		  <div class="arrow-bottom"></div>
+		</div>
+		
+		<script>
+			getMonthCon(anno);
+		</script>
+		</div>
+		</center>
+		
+		<center>
+			<section class="wrapper" id="tab" name="collapsible" style="float:center">
+					
+			</section>
+		</center>
+		
+		<script>
+			info();
+		</script>
+		<script>//script per i collapsable
+				var coll = document.getElementsByClassName("row nfl");
+				var i;
+
+				for (i = 0; i < coll.length; i++) {
+				  coll[i].addEventListener("click", function() {
+					this.classList.toggle("active");
+					var content = this.nextElementSibling;
+					if (content.style.display === "block") {
+					  content.style.display = "none";
+					} else {
+					  content.style.display = "block";
+					}
+				  });
+				}
+		</script>
+		
+		<script>
+			var fr_piu = document.getElementsByName("frecciaPiu");
+			var i;
+
+			for (i = 0; i < fr_piu.length; i++) {
+			  fr_piu[i].addEventListener("click", function() {
+				anno += 1;
+				switchAnno(anno);
+			  });
+			}
+			
+			var fr_meno = document.getElementsByName("frecciaMeno");
+			var i;
+
+			for (i = 0; i < fr_meno.length; i++) {
+			  fr_meno[i].addEventListener("click", function() {
+				anno -= 1;
+				switchAnno(anno);
+			  });
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<title>Sign-up</title>
+		<link rel="icon" type="image/x-icon" href="../img/logo.png">
+		<meta charset="utf-8"/>
+		<meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+		<link href="../css/generale.css" rel="stylesheet" type="text/css"/>
+		
+	</head>
+	
+	<body>
+	
+		<!-- navbar con tansti e logo -->
+		<div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navigation-bar w-nav">
+			<div class="w-container">
+				
+				<!-- logo -->
+				<!--
+				<a href="" aria-current="page" class="brand-link w-nav-brand w--current">
+					<h1 class="brand-text"><img src="img/logo.png" alt="logo" class="logo"/></h1>
+				</a>
+				-->	
+				<a href="" aria-current="page" class="brand-link w-nav-brand w--current">
+					<h1 class="brand-text">ARDOS</h1>
+				</a>
+				
+				<!-- tassti -->
+				<nav role="navigation" class="navigation-menu w-nav-menu">
+					<a href="../index.html" aria-current="page" class="navigation-link w-nav-link">Home</a>
+					<a href="contact.html" class="navigation-link w-nav-link">Contatti</a>
+					<a href="login.html" class="navigation-link w-nav-link">Accedi</a>
+				</nav>
+				
+				<!-- per telefono da sistemare https://codepen.io/alvarotrigo/pen/MWEbgEd?editors=1100 -->
+				<input type="checkbox" id="hamburger-input" />
+				<label id="hamburger-menu" for="hamburger-input">
+				  <nav id="sidebar-menu">
+					<ul>
+					  <li><a href="../index.html">Home</a></li>
+					  <li><a href="contact.html" >Contatti</a></li>
+					  <li><a href="login.html" >Login</a></li>
+
+					</ul>
+				  </nav>
+				</label>
+			</div>
+		</div>
+		
+		
+		<!-- zona centrale con tasti --> 
+		<div class="hero-section centered">
+			<div data-w-id="e464d218-f801-55d1-1f50-7da00b5bfb8f" style="opacity:100" class="w-container">
+				<h1 data-ix="fade-in-bottom-page-loads" class="hero-heading">SIGN-UP</h1>
+				
+				<form id="signup" name="signup" data-name="signup" class="signup">
+					<input type="email" class="form-field w-input login" maxlength="128" name="Email" data-name="Email" placeholder="Enter your email" id="email" required=""/>
+					<input type="password" class="form-field w-input login" maxlength="128" name="password" data-name="password" placeholder="Enter your password" id="password" required=""/>
+					<input type="password" class="form-field w-input login" maxlength="128" name="password" data-name="password" placeholder="Confirm your password" id="password1" required=""/>
+				</form>
+				
+				<input type="submit" value="sign-up" class="button full-width w-button login" onclick="singup();"/>
+				
+			</div>
+		</div>
+		
+		<script>
+			function singup(){
+				var email = document.getElementById("email").value;
+				var pass = document.getElementById("password").value;
+				var pass1 = document.getElementById("password1").value;
+				
+				
+				if(pass== "" || pass1=="" || email=="") alert("inserire tutti i campi");
+				else{
+					if(pass != pass1) alert("le due password non coincidono");
+					else{
+						var element = email.split("@");
+						
+						if(element.length != 2 || element[1] == "") alert("email non valida");
+						else{
+							singupApi(email, pass);
+						}
+					}
+				}
+				
+			}
+			
+			
+			
+			function singupApi(email, password){
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.onreadystatechange = function() { 
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 201){
+						window.location.href = "login.html";
+					}
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 404 && xmlHttp.responseText != null){
+						alert("email già usata");
+						console.log(JSON.parse(xmlHttp.responseText));
+						return 0;
+					}
+				}
+				
+				xmlHttp.open("POST", "https://local.marconivr.it/ardos/API/singup", true); // true for asynchronous
+				var data = JSON.stringify({"email":email,
+										   "password":password});
+				xmlHttp.setRequestHeader("Content-Type", "application/json");
+				xmlHttp.send(data);
+			}
+		</script>
+
+		
+		<!-- footer con link -->
+		<div class="footer">
+			<div class="w-container">
+				<div class="w-row">
+					<div class="spc w-col w-col-4">
+						<h5>In riguardo ad Ardos</h5>
+						<p>Nato come progetto scolastico con la collaborazione di Terranova.<br>
+						membri del gruppo: Soffiati Lorenzo, Ferrari Francesco, Barascu Umberto, Aldrighetti Maximo, Ilievski andrej</p>
+					</div>
+					<div class="spc w-col w-col-4">
+						<h5>Link utili</h5>
+						<a href="contact.html" class="footer-link">Contattaci</a>
+						<a href="login.html" class="footer-link">Login</a>
+
+					</div>
+					<div class="w-col w-col-4">
+						<h5>Social</h5>
+						<div class="footer-link-wrapper w-clearfix">
+							<img src="https://assets.website-files.com/5e4b18feebfd1a721bb930e6/5e4b18feebfd1a3b71b93135_social-18.svg" width="20" alt="" class="info-icon"/>
+							<a href="#" class="footer-link with-icon">Twitter</a>
+						</div>
+						<div class="footer-link-wrapper w-clearfix">
+							<img src="https://assets.website-files.com/5e4b18feebfd1a721bb930e6/5e4b18feebfd1a0b47b9311e_social-03.svg" width="20" alt="" class="info-icon"/>
+							<a href="#" class="footer-link with-icon">Facebook</a>
+						</div>				
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

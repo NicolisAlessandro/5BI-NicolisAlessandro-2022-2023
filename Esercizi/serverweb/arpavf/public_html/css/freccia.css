@@ -1,0 +1,135 @@
+.arrow {
+	cursor: pointer;
+	height: 120px;
+	margin-top: 60px;
+	margin-left: 40px;
+	transform: translateX(-50%) translateY(-50%);
+	transition: transform .1s;
+	width: 80px;
+}
+
+.sarrow {
+	cursor: pointer;
+	height: 120px;
+	margin-top: 60px;
+	margin-left: 40px;
+	transform: translateX(-50%) translateY(-50%);
+	transition: transform .1s;
+	width: 80px;
+}
+
+.arrow-top, .arrow-bottom {
+	background-color: #666;
+	height: 4px;
+	left: -5px;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+}
+
+.arrow-top:after, .arrow-bottom:after {
+	background-color: #fff;
+	content: '';
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: all 0.15s;
+}
+
+.arrow-top {
+	transform: rotate(45deg);
+	transform-origin: bottom right;
+}
+
+.arrow-top:after {
+	left: 100%;
+	right: 0;
+	transition-delay: 0s;
+}
+
+.arrow-bottom {
+	transform: rotate(-45deg);
+	transform-origin: top right;
+}
+
+.arrow-bottom:after {
+	left: 0;
+	right: 100%;
+	transition-delay: 0.15s;
+}
+
+/* ===================================== */
+.arrow-stop, .arrow-sbottom {
+	background-color: #666;
+	height: 4px;
+	left: -5px;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+}
+
+.arrow-stop:after, .arrow-sbottom:after {
+	background-color: #fff;
+	content: '';
+	height: 100%;
+	position: absolute;
+	top: 0;
+	transition: all 0.15s;
+}
+
+.arrow-stop {
+	margin-left: -89%;
+	margin-top: -5%;
+	transform: rotate(135deg);
+	transform-origin: bottom right;
+}
+
+.arrow-stop:after {
+	left: 100%;
+	right: 0;
+	transition-delay: 0s;
+}
+
+.arrow-sbottom {
+	margin-left: -89%;
+	transform: rotate(-135deg);
+	transform-origin: top right;
+}
+
+.arrow-sbottom:after {
+	left: 0;
+	right: 100%;
+	transition-delay: 0.15s;
+}
+
+
+/*================================================*/
+.arrow:hover .arrow-top:after {
+	left: 0;
+	transition-delay: 0.15s;
+}
+
+.arrow:hover .arrow-bottom:after {
+	right: 0;
+	transition-delay: 0s;
+}
+
+.arrow:active {
+	transform: translateX(-50%) translateY(-50%) scale(0.9);
+}
+
+/*================================================*/
+.sarrow:hover .arrow-stop:after {
+	left: 0;
+	transition-delay: 0.15s;
+}
+
+.sarrow:hover .arrow-sbottom:after {
+	right: 0;
+	transition-delay: 0s;
+}
+
+.sarrow:active {
+	transform: translateX(-50%) translateY(-50%) scale(
+	0.9);
+}
