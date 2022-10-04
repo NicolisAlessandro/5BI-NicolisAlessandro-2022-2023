@@ -9,6 +9,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class TPTF_1Client {
 
@@ -37,7 +38,8 @@ public class TPTF_1Client {
     private DatagramPacket inBoundDatagramPacket;
 
     public static void main(String[] args) throws IOException {
-        String fileName = "filecorto";
+        Scanner s = new Scanner(System.in);
+        String fileName = s.nextLine();
         TPTF_1Client tFTPClientNet = new TPTF_1Client();
         tFTPClientNet.get(fileName);
 

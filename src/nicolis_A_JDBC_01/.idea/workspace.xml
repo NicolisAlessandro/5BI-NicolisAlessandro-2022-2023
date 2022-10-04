@@ -4,14 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8aef5872-4ae9-4403-9281-429ff43d45b1" name="Changes" comment="" />
+    <list default="true" id="8aef5872-4ae9-4403-9281-429ff43d45b1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Esercizi/nicolis_A_TFTP_2/nicolis_A_TPTF_2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_7_bin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/opencsv_5_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_34_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/JDBC_DB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Esercizi/nicolis_A_TPTF_01/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Esercizi/nicolis_A_TPTF_01/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Esercizi/nicolis_A_TPTF_01/bin/TPTF_1Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Esercizi/nicolis_A_TPTF_01/bin/TPTF_1Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/JDBC_01.java" beforeDir="false" afterPath="$PROJECT_DIR$/bin/JDBC_01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nicolis_A_JDBC_01.iml" beforeDir="false" afterPath="$PROJECT_DIR$/nicolis_A_JDBC_01.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2FPRFXvVlxyKJoGmSVM3vvOClwJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -23,9 +47,36 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Utente/Documents/Scuola/SRI/Esercizi/nicolis_A_TPTF_01"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Utente/Documents/Scuola/INFO/GitHub/5BI-NicolisAlessandro-2022-2023/src/nicolis_A_ETL_01",
+    "mysql-explain.agentPath": "C:\\Users\\Utente\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-C\\ch-0\\222.4167.29.plugins\\mysql-explain-intellij-plugin\\lib\\mysql-explain-agent-1.0-jar-with-dependencies.jar",
+    "mysql-explain.existMysqlJar": "true",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="JDBC_01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="nicolis_A_JDBC_01.bin.JDBC_01" />
+      <module name="nicolis_A_JDBC_01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nicolis_A_JDBC_01.bin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.JDBC_01" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -47,5 +98,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException" package="com.mysql.jdbc.exceptions.jdbc4" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
