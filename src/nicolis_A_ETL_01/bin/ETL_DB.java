@@ -17,6 +17,10 @@ public class ETL_DB {
                     + "  " + resultSet.getString(3)
                     + "  " + resultSet.getString(4)
                     + "  " + resultSet.getString(5)
+                    + "  " + resultSet.getString(6)
+                    + "  " + resultSet.getString(7)
+                    + "  " + resultSet.getString(8)
+                    + "  " + resultSet.getString(9)
             );
         }
         statement.close();
@@ -38,12 +42,16 @@ public class ETL_DB {
         Statement statement = connection.createStatement();
         statement.executeUpdate(
                 "CREATE TABLE lezione_Nicolis ("
-                + "  `id` bigint(20) UNSIGNED NOT NULL primary key,"
-                + "  `classe` varchar(30) DEFAULT NULL,"
-                + "  `materia` varchar(20) NOT NULL,"
-                + "  `aula` varchar(20) NOT NULL,"
-                + "  `giorno` varchar(30) DEFAULT NULL,"
-                + "  `ora` varchar(30) DEFAULT NULL"
+                + "  `data` bigint(20) UNSIGNED NOT NULL primary key,"
+                + "  `ora` varchar(30) DEFAULT NULL,"
+                + "  `nome` varchar(20) NOT NULL,"
+                + "  `utente` varchar(20) NOT NULL,"
+                + "  `contestoEvento` varchar(30) DEFAULT NULL,"
+                + "  `componente` varchar(30) DEFAULT NULL"
+                + "  `Evento` varchar(30) DEFAULT NULL"
+                + "  `descrizione` varchar(30) DEFAULT NULL"
+                + "  `origine` varchar(30) DEFAULT NULL"
+                + "  `indirizzoIP` varchar(30) DEFAULT NULL"
                 + ")");
     }
 

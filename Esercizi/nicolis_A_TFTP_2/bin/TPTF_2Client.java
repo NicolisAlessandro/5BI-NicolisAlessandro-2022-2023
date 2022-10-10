@@ -16,7 +16,6 @@ public class TPTF_2Client {
 
         private static final String TFTP_SERVER_IP = "172.16.1.99";
         private static final int TFTP_DEFAULT_PORT = 69;
-
         // TFTP OP Code
         private static final byte OP_RRQ = 1;
         private static final byte OP_DATAPACKET = 3;
@@ -46,7 +45,7 @@ public class TPTF_2Client {
                 int num = s.nextInt();
                 switch(num) {
                         case 1:
-
+                                file = s.nextLine();
                                 break;
                         case 2:
                                 // code block
@@ -54,6 +53,7 @@ public class TPTF_2Client {
                         default:
                                 // code block
                 }
+                return file;
         }
 
         private void get(String fileName) throws IOException {
