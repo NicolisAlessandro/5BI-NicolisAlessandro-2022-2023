@@ -139,4 +139,20 @@ public class ETL_DB {
         Statement statement = connection.createStatement();
         statement.execute("DROP COLUMN " + col + ";");
     }
+
+    public static boolean cancellaDati(Connection connection, String rig) throws SQLException {
+        PreparedStatement st = connection.prepareStatement("DELETE FROM logs_Nicolis WHERE data = " + rig + ";");
+        st.executeUpdate();
+        return false;
+    }
+
+    public static void leggiDati(Connection connection) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM logs_Nicolis");
+        String st = rs.toString();
+        System.out.println("st = " + st);
+
+        rs.close();
+        statement.close();
+    }
 }

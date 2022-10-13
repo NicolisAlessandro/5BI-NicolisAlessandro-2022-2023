@@ -65,6 +65,16 @@ class ETL_01 {
                                         String col = scanner.nextLine();
                                         dropColumn(connection, col);
                                 }
+                                case '8' -> {
+                                        String riga = scanner.nextLine();
+                                        boolean controllo = cancellaDati(connection, riga);
+                                        if (controllo){
+                                                System.out.println("controllo è = " + true);
+                                        }else{
+                                                System.out.println("controllo è = " + false);
+                                        }
+                                }
+                                case '9' -> leggiDati(connection);
                         }
                 }
         }
