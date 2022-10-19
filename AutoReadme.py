@@ -92,7 +92,7 @@ if __name__ == "__main__":
     if boold:
         print("Start")
 
-        updateMD(head + "/src/", "nicolis_A_", "")
+        updateMD(head + "/src/", "nicolis_A_", "C:/Users/Utente/Documents/Scuola/INFO/GitHub/5BI-NicolisAlessandro-2022-2023/src/nicolis_A_JDBC_01")
 
     if boold:
         print("End")
