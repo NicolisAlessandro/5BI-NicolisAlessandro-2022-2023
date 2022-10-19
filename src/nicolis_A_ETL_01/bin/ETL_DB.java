@@ -41,17 +41,17 @@ public class ETL_DB {
         Statement statement = connection.createStatement();
         statement.executeUpdate(
                 "CREATE TABLE logs_Nicolis ("
-                + "  `data` bigint(20) UNSIGNED NOT NULL primary key,"
-                + "  `ora` varchar(30) DEFAULT NULL,"
-                + "  `nome` varchar(20) NOT NULL,"
-                + "  `utente` varchar(20) NOT NULL,"
-                + "  `contestoEvento` varchar(30) DEFAULT NULL,"
-                + "  `componente` varchar(30) DEFAULT NULL"
-                + "  `Evento` varchar(30) DEFAULT NULL"
-                + "  `descrizione` varchar(30) DEFAULT NULL"
-                + "  `origine` varchar(30) DEFAULT NULL"
-                + "  `indirizzoIP` varchar(30) DEFAULT NULL"
-                + ")");
+                        + "  `data` bigint(20) UNSIGNED NOT NULL primary key,"
+                        + "  `ora` varchar(30) DEFAULT NULL,"
+                        + "  `nome` varchar(20) NOT NULL,"
+                        + "  `utente` varchar(20) NOT NULL,"
+                        + "  `contestoEvento` varchar(30) DEFAULT NULL,"
+                        + "  `componente` varchar(30) DEFAULT NULL"
+                        + "  `Evento` varchar(30) DEFAULT NULL"
+                        + "  `descrizione` varchar(30) DEFAULT NULL"
+                        + "  `origine` varchar(30) DEFAULT NULL"
+                        + "  `indirizzoIP` varchar(30) DEFAULT NULL"
+                        + ")");
     }
 
     public static int insertTab01(Connection connection) throws SQLException {
@@ -69,36 +69,36 @@ public class ETL_DB {
                         + "  `origine` varchar(30) DEFAULT NULL"
                         + "  `indirizzoIP` varchar(30) DEFAULT NULL"
                         + ")"
-                );
+        );
     }
 
     public static int modifyTable(Connection connection, String data, String ora, String nome, String utente,
-                                  String contEv, String comp, String ev, String descr, String orig, String indIP )
-                                throws SQLException {
+                                  String contEv, String comp, String ev, String descr, String orig, String indIP)
+            throws SQLException {
         String updateSQL = "update logs_Nicolis set classe=?,materia=?, aula=?, giorno=?, ora=? where id=?";
         PreparedStatement statement = connection.prepareStatement(updateSQL);
-            statement.setString(1, data);
-            statement.setString(2, ora);
-            statement.setString(3, nome);
-            statement.setString(4, utente);
-            statement.setString(5, contEv);
-            statement.setString(6, comp);
-            statement.setString(7, ev);
-            statement.setString(8, descr);
-            statement.setString(9, orig);
-            statement.setString(10, indIP);
+        statement.setString(1, data);
+        statement.setString(2, ora);
+        statement.setString(3, nome);
+        statement.setString(4, utente);
+        statement.setString(5, contEv);
+        statement.setString(6, comp);
+        statement.setString(7, ev);
+        statement.setString(8, descr);
+        statement.setString(9, orig);
+        statement.setString(10, indIP);
 
         return statement.executeUpdate();
     }
 
     public static void csvInserisci(Connection connection) throws IOException, SQLException {
         String file = "file/logs_5BI 202223_20221004-1028.csv";
-        BufferedReader lineReader=new BufferedReader(new FileReader(file));
+        BufferedReader lineReader = new BufferedReader(new FileReader(file));
 
         String lineText;
 
         lineReader.readLine();
-        while ((lineText=lineReader.readLine())!=null) {
+        while ((lineText = lineReader.readLine()) != null) {
             String[] data = lineText.split(",");
 
             String datA = data[0];
@@ -130,6 +130,7 @@ public class ETL_DB {
             statement.addBatch();
         }
     }
+
     public static void dropTable(Connection connection, String table) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute("DROP TABLE " + table + ";");
