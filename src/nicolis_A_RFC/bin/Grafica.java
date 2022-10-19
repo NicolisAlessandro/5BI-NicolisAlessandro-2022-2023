@@ -5,9 +5,9 @@ import java.awt.*;
 
 public class Grafica extends JPanel {
 
-    private Image image;
     private final int panelWidth = 400;
     private final int panelHeight = 450;
+    private Image image;
 
     public Grafica() {
 

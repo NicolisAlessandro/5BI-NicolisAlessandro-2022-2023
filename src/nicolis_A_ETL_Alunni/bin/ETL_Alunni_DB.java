@@ -85,12 +85,12 @@ public class ETL_Alunni_DB {
 
     public static void csvInserisci(Connection connection) throws IOException, SQLException {
         String file = "file/export_alunni.csv";
-        BufferedReader lineReader=new BufferedReader(new FileReader(file));
+        BufferedReader lineReader = new BufferedReader(new FileReader(file));
 
         String lineText;
 
         lineReader.readLine();
-        while ((lineText=lineReader.readLine())!=null) {
+        while ((lineText = lineReader.readLine()) != null) {
             String[] data = lineText.split(";");
 
             String matr = data[0];

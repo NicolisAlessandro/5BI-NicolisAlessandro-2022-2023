@@ -3,9 +3,10 @@
 ---
 
 ## Consegna
-Scrivere un applicazione java con le seguenti funzionalità separate:
 
--Creazione  DB - Tabella
+Scrivere un applicazione java con le seguenti funzionalitï¿½ separate:
+
+-Creazione DB - Tabella
 
 -ETL dati
 

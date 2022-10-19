@@ -5,7 +5,9 @@ import com.opencsv.exceptions.CsvException;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -47,7 +49,7 @@ public class JDBC_01 {
                 case '0' -> cont = false;
                 case '2' -> viewTable(connection);
                 case '5' -> {
-                    l= csvInserisci();
+                    l = csvInserisci();
                     System.out.println("l = " + l);
                 }
                 case '3' -> {
